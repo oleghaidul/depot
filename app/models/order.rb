@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
 	PAYMENT_TYPES = [ "Check", "Credit card", "Purchase order" ]
 
   has_many :line_items
+  belongs_to :user
 
   validates :name, :address, :email, :pay_type, :presence => true
   validates :pay_type, :inclusion => PAYMENT_TYPES

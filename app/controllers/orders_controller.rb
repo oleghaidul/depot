@@ -1,14 +1,18 @@
-class OrdersController < ApplicationController
+class OrdersController < InheritedResources::Base
+  load_and_authorize_resource
   
-    def index
-      @orders = Order.order('created_at desc').page params[:page]
-    end
+  def index
+    @orders = Order.order('created_at desc').page params[:page]
+  end
 
+  def edit
+    @order = Order.find(params[:id])
+  end
 
   def new
     @cart = current_cart
     if @cart.line_items.empty?
-      redirect_to store_url, :notice => "Your cart is empty"
+      redirect_to root_url, :notice => "Your cart is empty"
       return
     end
     @order = Order.new
@@ -22,7 +26,7 @@ class OrdersController < ApplicationController
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
       Notifier.order_received(@order).deliver
-      redirect_to store_url, :notice => 'Thank you for your order.'
+      redirect_to root_url, :notice => 'Thank you for your order.'
     else
       render :new
     end

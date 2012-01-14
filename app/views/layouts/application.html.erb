@@ -10,7 +10,7 @@
 </head>
 <body id="store" >
 	<div id="banner" >
-	<%= link_to image_tag("logo.png"), store_path %>
+	<%= link_to image_tag("logo.png"), root_path %>
 	<%= @page_title || "Pragmatic Bookshelf" %>
 	</div>
 		<div id="columns" >
@@ -21,10 +21,17 @@
         <% end %>
       <% end %>
 
-			<%= link_to "Home", store_path %><br />
+			<%= link_to "Home", root_path %><br />
 			<%= link_to "Questions", "#" %><br />
 			<%= link_to "News", "#" %><br />
 			<%= link_to "Contact", "#" %><br />
+			<% if user_signed_in? %>
+			  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %><br />
+        <%= link_to('Edit registration', edit_user_registration_path) %><br />
+			<% else %>
+			  <%= link_to('Login', new_user_session_path)  %><br />
+        <%= link_to('Register', new_user_registration_path)  %><br />
+			<% end %>
 			<p><%= time_tag Time.now %></p>
 			<p><%= pluralize session[:counter], 'time' if session[:counter] >= 5 %></p>
 		</div>

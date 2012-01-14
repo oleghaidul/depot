@@ -19,6 +19,10 @@ gem 'formtastic'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.10'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git', :branch => 'master'
+gem 'devise'
+gem 'web-app-theme', '~> 0.8.0'
+gem 'inherited_resources'
+gem "cancan"
 
 group :test do
   gem 'rspec-rails'
