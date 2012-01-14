@@ -4,6 +4,8 @@ class Product < ActiveRecord::Base
 
 	has_many :images
 	has_many :line_items
+	has_many :orders, :through => :line_items
+
 	accepts_nested_attributes_for :images
 	validates :title, :description, :presence => true
 	validates :title, :uniqueness => true
