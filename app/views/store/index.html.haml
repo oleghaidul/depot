@@ -1,9 +1,3 @@
 %h1 Your Pragmatic Catalog
-- @products.each do |product|
-  .entry
-    -if !product.images.empty?
-      =image_tag(product.images.first.image.url) 
-    %h3= product.title
-    = sanitize product.description
-    .price_line
-      %span.price= number_to_currency product.price
+=render @products
+  
