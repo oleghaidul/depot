@@ -1,0 +1,5 @@
+%p=@product.title
+%p=@product.description
+%p=@product.price
+-@product.images.each do |i|
+	%p=link_to(image_tag(i.image.thumb('80x80').url), i.image.url)

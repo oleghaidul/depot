@@ -1,7 +1,12 @@
-=semantic_form_for @product do |f|
-  =f.inputs do
+=semantic_nested_form_for @product, :html => {:multipart => true} do |f|
+  =f.inputs "Basic" do
     =f.input :title
-    =f.input :description, :as => :text, :rows => 16
-    =f.input :image_url
+    =f.input :description, :as => :text
     =f.input :price
-    =f.buttons
+  =f.fields_for :images do |image_f|
+    =image_f.input :name
+    =image_f.input :image, :as => :file
+    =image_f.input :retained_image, :as => :hidden
+    =image_f.link_to_remove "Remove this task"
+  %p=f.link_to_add "Add image", :images
+  =f.buttons

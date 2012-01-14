@@ -16,6 +16,9 @@ gem 'meta_search',    '>= 1.1.0.pre'
 gem 'haml'
 gem 'mongrel', '>1.2pre'
 gem 'formtastic'
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly', '~>0.9.10'
+gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git', :branch => 'master'
 
 group :test do
   gem 'rspec-rails'
