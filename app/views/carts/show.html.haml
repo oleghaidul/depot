@@ -1,8 +1,2 @@
-.cart_title Your Cart
-%table
-  =render @cart
-  %tr.total_line
-    %td Total
-    %td.total_cell=number_to_currency @cart.total_price
+=render @cart
 
-=button_to 'Empty cart', @cart, :method => :delete, :confirm => 'Are you sure?'

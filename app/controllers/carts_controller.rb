@@ -11,8 +11,12 @@ class CartsController < ApplicationController
   def destroy
     current_cart.destroy
     session[:cart_id] = nil
-    redirect_to store_url, :notice => 'Your cart is currently empty'
 
+    respond_to do |format|
+      format.html { redirect_to store_url }
+      format.js
+    end
   end
+
 
 end

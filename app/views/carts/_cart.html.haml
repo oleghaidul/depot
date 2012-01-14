@@ -1,1 +1,7 @@
-=render cart.line_items
+-unless cart.line_items.empty?
+  %table
+    =render cart.line_items
+    %tr.total_line
+      %td Total
+      %td.total_cell=number_to_currency @cart.total_price
+  =button_to 'Empty cart', @cart, :method => :delete, :confirm => 'Are you sure?', :remote => true

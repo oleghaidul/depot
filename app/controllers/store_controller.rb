@@ -2,6 +2,7 @@ class StoreController < ApplicationController
 	before_filter :counter
   def index
   	@products = Product.all
+  	@cart = current_cart
   end
 
   def counter

@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  
+
 </head>
 <body id="store" >
 	<div id="banner" >
@@ -13,6 +15,12 @@
 	</div>
 		<div id="columns" >
 		<div id="side" >
+      <% if @cart %>
+        <%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
+          <%= render @cart %>
+        <% end %>
+      <% end %>
+
 			<%= link_to "Home", store_path %><br />
 			<%= link_to "Questions", "#" %><br />
 			<%= link_to "News", "#" %><br />
