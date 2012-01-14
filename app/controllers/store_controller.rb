@@ -5,7 +5,7 @@ class StoreController < ApplicationController
   end
 
   def counter
-  	@session = session[:counter] = session[:counter].is_a?(Fixnum) ? session[:counter] + 1 : 0
+  	session[:counter] = session[:counter].is_a?(Fixnum) ? session[:counter] + 1 : 0
   end
 
 end

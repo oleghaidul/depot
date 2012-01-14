@@ -1,1 +1,6 @@
-%li=line_item.product.title
+%tr
+  %td
+    =line_item.quantity
+    \× #{line_item.product.title}
+    =button_to 'Delete', line_item_path(line_item), :method => :delete, :confirm => 'Are you sure?'
+  %td.total_price=number_to_currency line_item.total_price
