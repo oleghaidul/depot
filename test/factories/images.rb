@@ -2,8 +2,7 @@
 
 FactoryGirl.define do
   factory :image do
-    name "MyString"
-    image_name "MyString"
-    image_uid "MyString"
+  	name "Test Image name"
+  	image_name Rails.root.join("app/assets/images/rails.png")
   end
 end
