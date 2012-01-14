@@ -18,9 +18,12 @@
 			<%= link_to "News", "#" %><br />
 			<%= link_to "Contact", "#" %><br />
 			<p><%= time_tag Time.now %></p>
-			<p><%= pluralize @session, 'time' if @session >= 5 %></p>
+			<p><%= pluralize session[:counter], 'time' if session[:counter] >= 5 %></p>
 		</div>
 		<div id="main" >
+			<% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
 			<%= yield %>
 		</div>
 	</div>
