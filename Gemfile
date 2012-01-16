@@ -23,6 +23,7 @@ gem 'devise'
 gem 'web-app-theme', '~> 0.8.0'
 gem 'inherited_resources'
 gem "cancan"
+gem 'ancestry'
 
 group :test do
   gem 'rspec-rails'

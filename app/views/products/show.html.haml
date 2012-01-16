@@ -3,3 +3,5 @@
 %p=@product.price
 -@product.images.each do |i|
 	%p=link_to(image_tag(i.image.thumb('80x80').url), i.image.url)
+
+%p=link_to "Comments", product_comments_path(@product)

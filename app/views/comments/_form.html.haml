@@ -1,0 +1,7 @@
+=semantic_form_for [@product, @comment] do |f|
+  =f.inputs "Comments" do
+    =f.input :title
+    =f.input :content, :as => :text
+    =f.input :parent_id, :as => :hidden
+  =f.buttons
+  

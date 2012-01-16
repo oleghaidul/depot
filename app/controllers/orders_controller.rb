@@ -2,7 +2,11 @@ class OrdersController < InheritedResources::Base
   load_and_authorize_resource
   
   def index
-    @orders = Order.order('created_at desc').page params[:page]
+    #@orders = Order.order('created_at desc').page params[:page]
+  end
+
+  def show
+    #@order = Order.find(params[:id])
   end
 
   def edit
@@ -15,7 +19,7 @@ class OrdersController < InheritedResources::Base
       redirect_to root_url, :notice => "Your cart is empty"
       return
     end
-    @order = Order.new
+    #@order = Order.new
   end
 
   def create
