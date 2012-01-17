@@ -1,5 +1,5 @@
 .entry
-  -if !product.images.empty?
+  -if !product.images.any?
     =link_to image_submit_tag(product.images.first.image.url), line_items_path(:product_id => product), :method => :post, :remote => true
   %h3= product.title
   = sanitize product.description

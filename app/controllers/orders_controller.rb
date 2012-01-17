@@ -10,7 +10,7 @@ class OrdersController < InheritedResources::Base
   end
 
   def edit
-    @order = Order.find(params[:id])
+    #@order = Order.find(params[:id])
   end
 
   def new
@@ -24,6 +24,7 @@ class OrdersController < InheritedResources::Base
 
   def create
     @order = Order.new(params[:order])
+    @order.user = current_user
     @order.add_line_items_from_cart(current_cart)
 
     if @order.save

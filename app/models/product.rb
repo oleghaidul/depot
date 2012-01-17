@@ -2,12 +2,14 @@ class Product < ActiveRecord::Base
 	default_scope :order => 'title'
 	before_destroy :ensure_not_referenced_by_any_line_item
 
-	has_many :images
-	has_many :line_items
+	has_many :images, :dependent => :destroy
+	has_many :line_items, :dependent => :destroy
 	has_many :orders, :through => :line_items
-	has_many :comments
+	has_many :comments, :dependent => :destroy
 
-	accepts_nested_attributes_for :images
+	accepts_nested_attributes_for :images, :allow_destroy => true, 
+								:reject_if => proc { |attrs| attrs['image'].blank? }
+
 	validates :title, :description, :presence => true
 	validates :title, :uniqueness => true
 	validates :title, :length => {:minimum => 10}
@@ -16,12 +18,7 @@ class Product < ActiveRecord::Base
 	
 	private
 		def ensure_not_referenced_by_any_line_item
-			if line_items.count.zero?
-				return true
-			else
-				errors.add(:base, 'Line Items present')
-				return false
-			end
+			errors.add(:base, 'Line Items present') unless line_items.count.zero?
 		end
 
 end
