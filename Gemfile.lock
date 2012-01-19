@@ -187,6 +187,7 @@ GEM
       multi_json (~> 1.0.4)
       rubyzip
     sequel (3.20.0)
+    shoulda-matchers (1.0.0)
     sinatra (1.0)
       rack (>= 1.0)
     spork (0.9.0.rc9)
@@ -257,6 +258,7 @@ DEPENDENCIES
   rails (= 3.1.3)
   rspec-rails
   sass-rails (~> 3.1.5)
+  shoulda-matchers
   spork (= 0.9.0rc9)
   taps
   therubyracer

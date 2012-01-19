@@ -27,6 +27,7 @@ gem 'ancestry'
 
 group :test do
   gem 'rspec-rails'
+  gem "shoulda-matchers"
   gem 'webrat'
   gem 'capybara'
   gem 'cucumber-rails'
